@@ -10,17 +10,10 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
+
       <Component {...pageProps} />
     </>
   )
 }
 
 export default MyApp
-
-import '@styles/globals.css'
-
-function Application({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-
-export default Application
