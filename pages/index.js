@@ -2,118 +2,222 @@ import { productos } from "../data/productos"
 import { useState } from "react"
 
 export default function Home() {
-
   const [categoria, setCategoria] = useState("todo")
+
+  const categorias = ["todo", "bebidas", "kiosco", "info"]
 
   const filtrados =
     categoria === "todo"
       ? productos
-      : productos.filter(p => p.categoria === categoria)
+      : productos.filter((p) => p.categoria === categoria)
 
   return (
-    <div>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f5f7fb",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          background: "white",
+          minHeight: "100vh",
+          boxShadow: "0 0 30px rgba(0,0,0,0.06)",
+        }}
+      >
+        {/* header */}
 
-      {/* HEADER */}
+        <header
+          style={{
+            textAlign: "center",
+            padding: "28px 20px 20px",
+            borderBottom: "1px solid #ececec",
+            background: "white",
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: "Bebas Neue, sans-serif",
+              fontSize: "64px",
+              letterSpacing: "4px",
+              margin: 0,
+              color: "#111",
+            }}
+          >
+            hoy se pica
+          </h1>
+        </header>
 
-      <header style={{
-        /*padding: "20px",*/
-        textAlign: "center",
-        borderBottom: "1px solid #eee"
-      }}>
-        <h1 style={{
-          fontFamily: "Bebas Neue",
-          fontSize: "60px",
-          letterSpacing: "3px"
-        }}>
-          HOY SE PICA
-        </h1>
-      </header>
+        {/* banner */}
 
-      {/* BANNER */}
+        <div
+          style={{
+            /* minHeight: "120px", */
+            background: "linear-gradient(135deg, #2b6fff 0%, #6ea1ff 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            fontSize: "20px",
+            fontWeight: "bold",
+            textAlign: "center",
+            /* padding: "20px", */
+          }}
+        >
+          tu kiosco de confianza ñery yasupiste
+        </div>
 
-      <div style={{
-        height: "40px",
-        background: "#2b6fff",
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        color: "white",
-        fontSize: "26px",
-        fontWeight: "bold"
-      }}>
-        jorge pelado boludo
-      </div>
+        {/* nav categorias */}
 
-      {/* CATEGORIAS */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: "12px",
+            padding: "22px 20px",
+            borderBottom: "1px solid #eee",
+            background: "#fff",
+          }}
+        >
+          {categorias.map((cat) => {
+            const activa = categoria === cat
 
-      <div style={{
-        display: "flex",
-        gap: "30px",
-        justifyContent: "center",
-        padding: "20px",
-        borderBottom: "1px solid #eee"
-      }}>
-        <span onClick={() => setCategoria("todo")} style={{cursor:"pointer"}}>Todo</span>
-        <span onClick={() => setCategoria("bebidas")} style={{cursor:"pointer"}}>Bebidas</span>
-        <span onClick={() => setCategoria("kiosco")} style={{cursor:"pointer"}}>Kiosco</span>
-        <span onClick={() => setCategoria("info")} style={{cursor:"pointer"}}>Info</span>
-      </div>
-
-      {/* GRID PRODUCTOS */}
-
-      <div style={{
-        padding: "30px",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(180px,1fr))",
-        gap: "20px"
-      }}>
-
-        {filtrados.map(p => (
-          <div key={p.id} style={{
-            border: "1px solid #eee",
-            borderRadius: "10px",
-            overflow: "hidden",
-            background: "white"
-          }}>
-
-            <img
-              src={p.imagen}
-              style={{width:"100%", height:"140px", objectFit:"cover"}}
-            />
-
-            <div style={{padding:"10px"}}>
-
-              <div style={{fontWeight:"bold"}}>
-                {p.nombre}
-              </div>
-
-              <div style={{marginTop:"5px"}}>
-                ${p.precio}
-              </div>
-
-              <a
-                href={`https://wa.me/5491150537280?text=hola zorrita quiero ${p.nombre}`}
+            return (
+              <button
+                key={cat}
+                onClick={() => setCategoria(cat)}
                 style={{
-                  display:"block",
-                  marginTop:"10px",
-                  background:"#25D366",
-                  color:"white",
-                  textAlign:"center",
-                  padding:"6px",
-                  borderRadius:"6px",
-                  textDecoration:"none"
+                  border: activa ? "1px solid #2b6fff" : "1px solid #d9dce3",
+                  background: activa ? "#2b6fff" : "#f7f8fb",
+                  color: activa ? "white" : "#333",
+                  padding: "10px 18px",
+                  borderRadius: "999px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  textTransform: "capitalize",
+                  transition: "all 0.2s ease",
+                  boxShadow: activa
+                    ? "0 8px 20px rgba(43, 111, 255, 0.25)"
+                    : "none",
                 }}
               >
-                pedir
-              </a>
+                {cat}
+              </button>
+            )
+          })}
+        </div>
 
+        {/* titulo seccion */}
+
+        <div
+          style={{
+            textAlign: "center",
+            padding: "28px 20px 10px",
+          }}
+        >
+          <h2
+            style={{
+              margin: 0,
+              fontSize: "28px",
+              color: "#111",
+              textTransform: "capitalize",
+            }}
+          >
+            {categoria === "todo" ? "todos los productos" : categoria}
+          </h2>
+
+          <p
+            style={{
+              marginTop: "8px",
+              color: "#666",
+              fontSize: "14px",
+            }}
+          >
+            {filtrados.length} producto{filtrados.length !== 1 ? "s" : ""}
+          </p>
+        </div>
+
+        {/* grid productos */}
+
+        <div
+          style={{
+            padding: "30px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
+            gap: "22px",
+          }}
+        >
+          {filtrados.map((p) => (
+            <div
+              key={p.id}
+              style={{
+                border: "1px solid #ececec",
+                borderRadius: "18px",
+                overflow: "hidden",
+                background: "white",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+              }}
+            >
+              <img
+                src={p.imagen}
+                alt={p.nombre}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+
+              <div style={{ padding: "14px" }}>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    color: "#111",
+                    minHeight: "40px",
+                  }}
+                >
+                  {p.nombre}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "8px",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    color: "#2b6fff",
+                  }}
+                >
+                  ${p.precio}
+                </div>
+
+                <a
+                  href={`https://wa.me/5491150537280?text=hola zorrita quiero ${p.nombre}`}
+                  style={{
+                    display: "block",
+                    marginTop: "14px",
+                    background: "#25D366",
+                    color: "white",
+                    textAlign: "center",
+                    padding: "10px 12px",
+                    borderRadius: "10px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                  }}
+                >
+                  pedir
+                </a>
+              </div>
             </div>
-
-          </div>
-        ))}
-
+          ))}
+        </div>
       </div>
-
     </div>
   )
 }
