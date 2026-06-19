@@ -324,7 +324,7 @@ export default function Home() {
                 <h2>Listo, {pedido.nombre}.</h2>
                 <p>Tu pedido quedó armado. En una versión real, acá recibirías la confirmación del local.</p>
                 <div className="success-total"><span>Total</span><strong>{dinero.format(total)}</strong></div>
-                <a className="whatsapp-button" href={`https://wa.me/5491150537280?text=${mensajeWhatsApp}`} target="_blank" rel="noreferrer">Enviar pedido por WhatsApp</a>
+                <a className="whatsapp-button" href={`https://wa.me/5491158844358?text=${mensajeWhatsApp}`} target="_blank" rel="noreferrer">Enviar pedido por WhatsApp</a>
                 <button className="text-button" onClick={nuevoPedido}>Volver al inicio</button>
               </div>
             )}
