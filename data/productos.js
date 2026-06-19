@@ -1,30 +1,38 @@
 export const productos = [
   {
     id: 1,
-    nombre: "coca cola 500ml",
+    nombre: "Coca-Cola 500 ml",
+    descripcion: "Bien fría, como corresponde.",
     precio: 1200,
     categoria: "bebidas",
-    imagen: "/coca.jpg"
+    imagen: "/coca.jpg",
+    stock: 12,
   },
   {
     id: 2,
-    nombre: "sprite 500ml",
+    nombre: "Sprite 500 ml",
+    descripcion: "Lima-limón para bajar el calor.",
     precio: 1200,
     categoria: "bebidas",
-    imagen: "/sprite.jpg"
+    imagen: "/sprite.jpg",
+    stock: 4,
   },
   {
     id: 3,
-    nombre: "papas lays",
+    nombre: "Papas Lay's clásicas",
+    descripcion: "El paquete que siempre queda corto.",
     precio: 1500,
     categoria: "kiosco",
-    imagen: "/lays.jpg"
+    imagen: "/lays.jpg",
+    stock: 7,
   },
   {
     id: 4,
-    nombre: "oreo",
+    nombre: "Oreo original",
+    descripcion: "Chocolate, crema y cero discusión.",
     precio: 1300,
     categoria: "kiosco",
-    imagen: "/oreo.jpg"
-  }
+    imagen: "/oreo.jpg",
+    stock: 0,
+  },
 ]
